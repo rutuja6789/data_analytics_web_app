@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container mt-5" id="table-container">
+<h1>About Dataset</h1>
+<form id="visualForm" method="POST" action="/dataset_details">
+     <label> Detail:</label>
+<p>Total Data Count: {{ data_desc[0]['DEP_DELAY'] }}</p>
+<p>Mean Departure Delay: {{ data_desc[1]['DEP_DELAY'] }}</p>
+<h4>Sample Data:</h4>
+
+<!--  &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;  -->
+
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>FL_DATE</th>
+                <th>AIRLINE_CODE</th>
+                <th>DOT_CODE</th>
+                <th>FL_NUMBER</th>
+                <th>ORIGIN</th>
+                <th>ORIGIN_CITY</th>
+                <th>DEST</th>
+                <th>DEST_CITY</th>
+<!--                <th>CRS_DEP_TIME</th>-->
+                <th>DEP_TIME</th>
+                <th>DEP_DELAY</th>
+<!--                <th>TAXI_OUT</th>-->
+<!--                <th>WHEELS_OFF</th>-->
+<!--                <th>WHEELS_ON</th>-->
+<!--                <th>TAXI_IN</th>-->
+<!--                <th>CRS_ARR_TIME</th>-->
+<!--                <th>ARR_TIME</th>-->
+<!--                <th>ARR_DELAY</th>-->
+                <th>CANCELLED</th>
+                <th>CANCELLATION_CODE</th>
+<!--                <th>DIVERTED</th>-->
+<!--                <th>CRS_ELAPSED_TIME</th>-->
+<!--                <th>ELAPSED_TIME</th>-->
+<!--                <th>AIR_TIME</th>-->
+                <th>DISTANCE</th>
+<!--                <th>DELAY_DUE_CARRIER</th>-->
+                <th>DELAY_DUE_WEATHER</th>
+<!--                <th>DELAY_DUE_NAS</th>-->
+<!--                <th>DELAY_DUE_SECURITY</th>-->
+<!--                <th>DELAY_DUE_LATE_AIRCRAFT</th>-->
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in sample_data %}
+                <tr>
+                    <th>{{ row['FL_DATE'] }}</th>
+                    <td>{{ row['AIRLINE_CODE'] }}</td>
+                    <td>{{ row['DOT_CODE'] }}</td>
+                    <td>{{ row['FL_NUMBER'] }}</td>
+                    <td>{{ row['ORIGIN'] }}</td>
+                    <td>{{ row['ORIGIN_CITY'] }}</td>
+                    <td>{{ row['DEST'] }}</td>
+                    <td>{{ row['DEST_CITY'] }}</td>
+                    <!--<td>{{ row['CRS_DEP_TIME'] }}</td>-->
+                    <td>{{ row['DEP_TIME'] }}</td>
+                    <td>{{ row['DEP_DELAY'] }}</td>
+                    <!--<td>{{ row['TAXI_OUT'] }}</td>-->
+                    <!--<td>{{ row['WHEELS_OFF'] }}</td>-->
+                    <!--<td>{{ row['WHEELS_ON'] }}</td>-->
+                    <!--<td>{{ row['TAXI_IN'] }}</td>-->
+                    <!--<td>{{ row['CRS_ARR_TIME'] }}</td>-->
+                    <!--<td>{{ row['ARR_TIME'] }}</td>-->
+                    <!--<td>{{ row['ARR_DELAY'] }}</td>-->
+                    <td>{{ row['CANCELLED'] }}</td>
+<!--                    <td>{{ row['CANCELLATION_CODE'] }}</td>-->
+                    <!--<td>{{ row['DIVERTED'] }}</td>-->
+                    <!--<td>{{ row['CRS_ELAPSED_TIME'] }}</td>-->
+                    <!--<td>{{ row['ELAPSED_TIME'] }}</td>-->
+                    <!--<td>{{ row['AIR_TIME '] }}</td>-->
+                    <td>{{ row['DISTANCE'] }}</td>
+                    <!--<td>{{ row['DELAY_DUE_CARRIER'] }}</td>-->
+                    <td>{{ row['DELAY_DUE_WEATHER'] }}</td>
+                    <!--<td>{{ row['DELAY_DUE_NAS'] }}</td>-->
+                    <!--<td>{{ row['DELAY_DUE_SECURITY'] }}</td>-->
+                    <!--<td>{{ row['DELAY_DUE_LATE_AIRCRAFT'] }}</td>-->
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h4>Data Description:</h4>
+<table>
+    <thead>
+        <tr>
+            <th>Statistic</th>
+            <th>Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in data_desc %}
+            <tr>
+                <td>{{ row['summary'] }}</td>
+                <td>{{ row['DEP_DELAY'] }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

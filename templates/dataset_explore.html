@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+{% block content %}
+
+
+<div class="graph-main-container">
+<h1>Dataset Exploration</h1>
+
+<div class="graph-container">
+<img class="graph-image" src="data:image/png;base64,{{ plot_image }}" alt="Number of Airlines per Day">
+    <img class="graph-image" src="data:image/png;base64,{{ plot_image_2 }}"  alt="XYZ">
+</div>
+    </div>
+
+{% endblock %}
